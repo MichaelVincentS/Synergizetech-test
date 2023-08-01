@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: syn-configmap
+data:
+  # .env file
+  PG_HOST: "34.101.53.139"
+  PG_PORT: "5432"
+  PG_USER: postgres
+  PG_PASSWORD: Synergizetech
+  PG_DATABASE: postgres
+
+  REDIS_HOST: "34.101.109.193"
+  REDIS_PORT: "6379"
