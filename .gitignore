@@ -2,4 +2,4 @@
 *.tfstate.*
 
 **/.terraform/*
-**/.terraform/.terraform.lock.hcl
+**/kubernetes-terraform/.terraform.lock.hcl
