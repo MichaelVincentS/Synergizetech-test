@@ -2,7 +2,9 @@ variable "gke_num_nodes" {
   default     = 1
   description = "number of gke nodes"
 }
-
+variable "gke_name" {
+  description = "gke name"
+}
 # GKE cluster
 data "google_container_engine_versions" "gke_version" {
   location = var.region
