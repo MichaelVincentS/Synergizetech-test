@@ -2,7 +2,7 @@
     agent any
     environment {
         PROJECT_ID = 'synergize-test'
-        CLUSTER_NAME = '${GKE_NAME}-gke'
+        CLUSTER_NAME = "${GKE_NAME}-gke"
         LOCATION = 'asia-southeast2-a'
         CREDENTIALS_ID = 'synergize-test'
         BUILD_ID_IMAGE = "${BUILD_ID}"
