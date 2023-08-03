@@ -9,6 +9,7 @@ pipeline {
     CLUSTER_NAME = 'synergize-test-gke'
     LOCATION = 'asia-southeast2'
     CREDENTIALS_ID = 'synergize-test'
+    SHELL = "/bin/bash"
   }
   stages {
     stage('Build') {
