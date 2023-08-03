@@ -3,7 +3,7 @@
     environment {
         PROJECT_ID = 'synergize-test'
         CLUSTER_NAME = "${GKE_NAME}-gke"
-        LOCATION = 'asia-southeast2-a'
+        LOCATION = 'asia-southeast2'
         CREDENTIALS_ID = 'synergize-test'
         BUILD_ID_IMAGE = "${BUILD_ID}"
     }
@@ -67,7 +67,7 @@ Imdvb2dsZWFwaXMuY29tIgp9Cg==" | base64 -d > credentials.json
       stage('TF Apply') {
         steps {
           sh 'cd kubernetes-terraform && terraform apply --auto-approve'
-          sh 'sleep 300'
+          sh 'sleep 150'
         }
       }
       stage('Deploy to GKE') {

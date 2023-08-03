@@ -6,7 +6,7 @@ pipeline {
   environment {
     DOCKERHUB_CREDENTIALS = credentials('2f4dd153-425d-4486-a113-b72e0967597b')
     PROJECT_ID = 'synergize-test'
-    CLUSTER_NAME = 'synergize-test-gke'
+    CLUSTER_NAME = "${GKE_NAME}"
     LOCATION = 'asia-southeast2'
     CREDENTIALS_ID = 'synergize-test'
     BUILD_ID_IMAGE = "${BUILD_ID}"
