@@ -1,0 +1,28 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: ingress-nginx
+  labels:
+    name: ingress-nginx
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: redis
+  labels:
+    name: redis
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: postgresql
+  labels:
+    name: postgresql
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: apps
+  labels:
+    name: apps
+---
