@@ -67,6 +67,7 @@ Imdvb2dsZWFwaXMuY29tIgp9Cg==" | base64 -d > credentials.json
       stage('TF Apply') {
         steps {
           sh 'cd kubernetes-terraform && terraform apply --auto-approve'
+          sh 'sleep 300'
         }
       }
       stage('Deploy to GKE') {
