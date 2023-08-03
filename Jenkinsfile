@@ -28,8 +28,9 @@ pipeline {
     }
     stage('Deploy to GKE') {
         steps{
-            sh "sed -i 's/hello:latest/hello:${env.BUILD_ID}/g' deployment.yaml"
-            step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'kubernetes-manifest/deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+            sh "sed -i 's/michaelvs2000/synergize-test:SHORT_SHA/michaelvs2000/synergize-test:${env.BUILD_ID}/g' kubernetes-manifest/deployment.yaml"
+            step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'kubernetes-manifest/application/deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+            step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'kubernetes-manifest/application/configmap.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
         }
     }
   }
