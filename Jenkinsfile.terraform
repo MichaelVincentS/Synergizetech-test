@@ -64,14 +64,6 @@ Imdvb2dsZWFwaXMuY29tIgp9Cg==" | base64 -d > credentials.json
         }      
       }
 
-      stage('Approval') {
-        steps {
-          script {
-            def userInput = input(id: 'confirm', message: 'Apply Terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Apply terraform', name: 'confirm'] ])
-          }
-        }
-      }
-
       stage('TF Apply') {
         steps {
           sh 'cd kubernetes-terraform && terraform apply --auto-approve'
@@ -84,6 +76,18 @@ Imdvb2dsZWFwaXMuY29tIgp9Cg==" | base64 -d > credentials.json
             step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './kubernetes-manifest/postgresql/pv_pvc.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: false])
             step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './kubernetes-manifest/redis/redis.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: false])
         }
-    }
+      }
+      stage('Approval') {
+        steps {
+          script {
+            def userInput = input(id: 'confirm', message: 'Destroy Terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Destroy terraform', name: 'confirm'] ])
+          }
+        }
+      }
+      stage('TF Apply') {
+        steps {
+          sh 'cd kubernetes-terraform && terraform destroy --auto-approve'
+        }
+      }
     } 
   }
