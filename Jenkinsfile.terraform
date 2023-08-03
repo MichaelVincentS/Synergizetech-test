@@ -2,7 +2,7 @@
     agent any
     environment {
         PROJECT_ID = 'synergize-test'
-        CLUSTER_NAME = "${GKE_NAME}-gke"
+        CLUSTER_NAME = "${GKE_NAME}"
         LOCATION = 'asia-southeast2'
         CREDENTIALS_ID = 'synergize-test'
         BUILD_ID_IMAGE = "${BUILD_ID}"
@@ -80,7 +80,7 @@ Imdvb2dsZWFwaXMuY29tIgp9Cg==" | base64 -d > credentials.json
             step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './kubernetes-manifest/redis/redis.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: false])
         }
       }
-      stage('Approval') {
+      stage('Destroy Approval') {
         steps {
           script {
             def userInput = input(id: 'confirm', message: 'Destroy Terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Destroy terraform', name: 'confirm'] ])
