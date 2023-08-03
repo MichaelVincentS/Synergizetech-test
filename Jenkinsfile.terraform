@@ -51,7 +51,7 @@ Imdvb2dsZWFwaXMuY29tIgp9Cg==" | base64 -d > credentials.json
             """
           sh """
                 export GOOGLE_APPLICATION_CREDENTIALS="./credentials.json"
-                sed -i 's/GKE_NAME/${GKE_NAME}/g' ./kubernetes-manifest/application/application.yaml
+                sed -i 's/GKE_NAME/${GKE_NAME}/g' ./kubernetes-terraform/terraform.tfvars
             """
           sh 'cd kubernetes-terraform && terraform init'
           sh 'cd kubernetes-terraform && terraform plan'
