@@ -33,7 +33,6 @@ pipeline {
                 #!/bin/bash
                 sed -i 's/SHORT_SHA/${BUILD_ID}/g' ./kubernetes-manifest/application/application.yaml
             """
-            step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './kubernetes-manifest/clusterrole.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: false])
             step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './kubernetes-manifest/namespace.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: false])
             step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './kubernetes-manifest/nginx/nginx.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: false])
             step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './kubernetes-manifest/postgresql/postgresql.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: false])
