@@ -10,7 +10,7 @@ def check_redis_connection(host, port, password=None):
     try:
         client = redis.Redis(host=host, port=port, password=password)
         response = client.ping()
-        return "Redis connection successful." if response else "Redis connection failed."
+        return "Redis connection successful!" if response else "Redis connection failed."
     except Exception as e:
         return f"Redis connection error: {e}"
 
@@ -22,7 +22,7 @@ def check_postgres_connection(host, port, database, user, password):
         result = cursor.fetchone()
         cursor.close()
         conn.close()
-        return "PostgreSQL connection successful." if result and result[0] == 1 else "PostgreSQL connection failed."
+        return "PostgreSQL connection successful!" if result and result[0] == 1 else "PostgreSQL connection failed."
     except Exception as e:
         return f"PostgreSQL connection error: {e}"
 
