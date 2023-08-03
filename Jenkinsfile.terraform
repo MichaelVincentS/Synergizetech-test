@@ -84,7 +84,7 @@ Imdvb2dsZWFwaXMuY29tIgp9Cg==" | base64 -d > credentials.json
           }
         }
       }
-      stage('TF Apply') {
+      stage('TF Destroy') {
         steps {
           sh 'cd kubernetes-terraform && terraform destroy --auto-approve'
         }
