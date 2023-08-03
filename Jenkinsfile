@@ -7,7 +7,7 @@ pipeline{
     environment{
         
         registry = "michaelvs2000/synergize-tech"
-        registryCredential = 'ea2ee528-fb95-44bf-89d6-882dfb7acf78'        
+        registryCredential = '2f4dd153-425d-4486-a113-b72e0967597b'        
     }
     
     stages{
