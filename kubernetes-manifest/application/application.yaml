@@ -47,10 +47,10 @@ spec:
         app: synergize-apps
     spec:
       imagePullSecrets:
-        - name: gcr-json-key
+        - name: regcred
       containers:
       - name: synergize-apps
-        image: gcr.io/synergize-test/synergize:latest
+        image: michaelvs2000/synergize-test:SHORT_SHA
         envFrom:
         - configMapRef:
             name: syn-configmap
