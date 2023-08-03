@@ -72,6 +72,8 @@ Imdvb2dsZWFwaXMuY29tIgp9Cg==" | base64 -d > credentials.json
       }
       stage('Deploy to GKE') {
         steps{
+            step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './kubernetes-manifest/namespaces.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: false])
+            step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './kubernetes-manifest/clusterrole.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: false])
             step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './kubernetes-manifest/nginx/nginx.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: false])
             step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './kubernetes-manifest/postgresql/postgresql.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: false])
             step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './kubernetes-manifest/postgresql/pv_pvc.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: false])
